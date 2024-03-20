@@ -5,11 +5,12 @@ import java.awt.*;
 
 public class WordPanel extends JPanel{
 
+	private static final long serialVersionUID = 1L;
 	private String secretWord;
 	private JLabel wordLabel;
 
 	public WordPanel(String secretWord) {
-		
+
 		this.secretWord = secretWord;
 		this.wordLabel = new JLabel(getInitialDisplay());
 
@@ -51,5 +52,25 @@ public class WordPanel extends JPanel{
 
 	public String getSecretWord() {
 		return secretWord;
+	}
+
+	public void displayWord() {
+		StringBuilder initialDisplay = new StringBuilder();
+		for (int i = 0; i < secretWord.length(); i++) {
+			initialDisplay.append("_ ");
+		}
+		wordLabel.setText(initialDisplay.toString().trim());
+	}
+
+	public void resetWord(String secretWord2) {
+		this.secretWord = secretWord2;
+		StringBuilder initialDisplay = new StringBuilder();
+		// Iterate over each character in the secret word
+		for (int i = 0; i < secretWord2.length(); i++) {
+			// Append an underscore followed by a space to the initial display
+			initialDisplay.append("_ ");
+		}
+		// Set the text of the word label to the initial display
+		wordLabel.setText(initialDisplay.toString().trim());
 	}
 }
