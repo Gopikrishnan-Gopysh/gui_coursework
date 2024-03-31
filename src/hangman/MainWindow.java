@@ -13,18 +13,18 @@ import java.util.Random;
 public class MainWindow extends JFrame {
 
     private static final long serialVersionUID = 1L;
-    private HealthPanel healthPanel;
-    private ButtonPanel buttonPanel;
-    private WordPanel wordPanel;
+    private HealthPanel healthPanel; // Low coupling
+    private ButtonPanel buttonPanel; // Low coupling
+    private WordPanel wordPanel; // Low coupling
     private String secretWord;
 
     // Constructor
     public MainWindow() {
-        // Initialize components
+        // Initialize components (All of them have low coupling)
         healthPanel = new HealthPanel(7); // 7 incorrect guesses allowed
-        secretWord = getRandomWordFromFile("wordlist.txt");    // Load the list of words from a file and select a random word
-        wordPanel = new WordPanel(secretWord);
-        buttonPanel = new ButtonPanel(wordPanel, healthPanel, this);
+        secretWord = getRandomWordFromFile("wordlist.txt"); // Load the list of words from a file and select a random word
+        wordPanel = new WordPanel(secretWord); 
+        buttonPanel = new ButtonPanel(wordPanel, healthPanel, this); 
 
         // Set up JFrame
         setTitle("Hangman");
@@ -44,7 +44,7 @@ public class MainWindow extends JFrame {
 
     // Method to get a random word from a file
     private String getRandomWordFromFile(String filename) {
-        List<String> words = readWordsFromFile(filename);
+        List<String> words = readWordsFromFile(filename); // Low coupling (Uses method to read words)
         if (words.isEmpty()) {
             return null;
         }
@@ -70,7 +70,7 @@ public class MainWindow extends JFrame {
     // Method to start the game
     public void startGame() {
         System.out.println("Welcome to Hangman!");
-        wordPanel.displayWord();
+        wordPanel.displayWord(); // Functional cohesion (Displays word, closely related to game start)
     }
 
     // Method to end the game and display a message dialog

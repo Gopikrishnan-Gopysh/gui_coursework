@@ -18,8 +18,8 @@ public class HealthPanel extends JPanel {
         this.lifeLabels = new ArrayList<>();
 
         setLayout(new FlowLayout());
-        initializeLifeLabels();
-        displayHealth();
+        initializeLifeLabels(); // Functional cohesion (Initialization closely related to panel construction)
+        displayHealth(); // Functional cohesion (Initial health display closely related to panel construction)
     }
 
     // Initializes the life labels representing the player's lives.
@@ -47,7 +47,7 @@ public class HealthPanel extends JPanel {
     public void removeLife() {
         if (lives > 0) {
             lives--;
-            displayHealth();
+            displayHealth(); // Functional cohesion (Updates health display closely related to life removal)
         }
     }
 

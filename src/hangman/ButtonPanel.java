@@ -48,12 +48,12 @@ public class ButtonPanel extends JPanel {
     private void handleButtonClick(String guessedLetter) {
         boolean correctGuess = wordPanel.guess(guessedLetter);
         if (!correctGuess) {
-            healthPanel.removeLife(); // Remove a life if the guess is incorrect
+            healthPanel.removeLife(); // Remove a life if the guess is incorrect // Low coupling (Interacts with HealthPanel through method call)
             if (healthPanel.isGameOver()) {
                 // Game over due to running out of lives
                 System.out.println("Sorry, you ran out of lives. The correct word was: " + wordPanel.getSecretWord());
                 disableAllButtons();
-                mainWindow.endGame(false);
+                mainWindow.endGame(false); // Low coupling (Interacts with MainWindow through method call)
             } else {
                 char incorrectLetter = guessedLetter.charAt(0);
                 int remainingLives = healthPanel.getRemainingLives();
@@ -63,7 +63,7 @@ public class ButtonPanel extends JPanel {
             // Word guessed correctly
             System.out.println("Congratulations! You guessed the entire word correctly.");
             disableAllButtons();
-            mainWindow.endGame(true);
+            mainWindow.endGame(true); // Low coupling (Interacts with MainWindow through method call)
         }
     }
 
@@ -77,14 +77,14 @@ public class ButtonPanel extends JPanel {
     // Enables all letter buttons.
     public void displayButtons() {
         for (JButton button : letterButtons) {
-            button.setEnabled(true); // Enable all buttons at the beginning of each game
+            button.setEnabled(true); // Enable all buttons at the beginning of each game // Low coupling (Interacts with JButton objects)
         }
     }
 
     // Resets all letter buttons to enabled state.
     public void resetButtons() {
         for (int i = 0; i < ALPHABET_SIZE; i++) {
-            letterButtons[i].setEnabled(true); // Enable all buttons
+            letterButtons[i].setEnabled(true); // Enable all buttons // Low coupling (Interacts with JButton objects)
         }
     }
 }
