@@ -29,7 +29,8 @@ public class MainWindow extends JFrame {
         // Set up JFrame
         setTitle("Hangman");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+        setLayout(new GridLayout(3,1));
+
 
         // Add components to JFrame
         add(healthPanel, BorderLayout.NORTH);

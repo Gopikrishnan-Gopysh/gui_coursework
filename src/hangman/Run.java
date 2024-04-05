@@ -8,7 +8,8 @@ public class Run {
 		SwingUtilities.invokeLater(() -> {
 			MainWindow mainWindow = new MainWindow();
 			mainWindow.setTitle("Hangman Game");
-			mainWindow.setSize(400, 300);
+			mainWindow.setSize(800, 600);
+			mainWindow.setLocationRelativeTo(null);
 			mainWindow.setVisible(true);
 		});
 	}
